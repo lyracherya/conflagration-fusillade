@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://b1u7l0wjb0oq4"]
+
+[node name="PlayerHud" type="CanvasLayer" unique_id=1726726860]
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1165561939]
+custom_minimum_size = Vector2(60, 60)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=501867032]
+offset_left = 919.0
+offset_top = 9.0
+offset_right = 1139.0
+offset_bottom = 52.0
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=150519381]
+layout_mode = 2
+
+[node name="HealthBar" type="ProgressBar" parent="VBoxContainer" unique_id=1708787468]
+custom_minimum_size = Vector2(220, 16)
+layout_mode = 2
+show_percentage = false

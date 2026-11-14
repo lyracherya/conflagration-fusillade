@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bevt5igpsojoo"]
+
+[ext_resource type="Script" uid="uid://ct1x4p55ajb1" path="res://Objects/Interactable.gd" id="1_3hkng"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5033"]
+size = Vector2(42.5, 39.5)
+
+[node name="Interactable" type="Area2D" unique_id=2060086614 groups=["interactable"]]
+collision_layer = 16
+script = ExtResource("1_3hkng")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1625749468]
+polygon = PackedVector2Array(-19, -20, 21, -20, 21, 17, -20, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=349733571]
+position = Vector2(0.75, -1.25)
+shape = SubResource("RectangleShape2D_i5033")

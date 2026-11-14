@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://mud64ute32v1"]
+
+[ext_resource type="Script" uid="uid://dp5mqukoukn8s" path="res://Player/Player.gd" id="1_q3lat"]
+[ext_resource type="PackedScene" uid="uid://b8iegw6uttl7d" path="res://Projectiles/Projectile.tscn" id="2_ddoul"]
+[ext_resource type="Texture2D" uid="uid://cxc37h1r1gr2y" path="res://icon.svg" id="2_tok1r"]
+[ext_resource type="Script" uid="uid://wea6acck4mw7" path="res://components/HealthComponents.gd" id="4_ddoul"]
+[ext_resource type="AnimationLibrary" uid="uid://u5rpan7ynbky" path="res://Assets/animations.res" id="5_8g4oa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i5033"]
+radius = 61.13101
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lbgnv"]
+radius = 88.362885
+
+[node name="Player" type="CharacterBody2D" unique_id=2127396765]
+collision_layer = 2
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_q3lat")
+projectile_scene = ExtResource("2_ddoul")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1410630629]
+texture = ExtResource("2_tok1r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1828828633]
+shape = SubResource("CircleShape2D_i5033")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1441998440]
+position_smoothing_enabled = true
+
+[node name="Node2D" type="Node2D" parent="." unique_id=1892214183]
+
+[node name="AimPivot" type="Node2D" parent="." unique_id=1070214076]
+
+[node name="Sprite2D" type="Sprite2D" parent="AimPivot" unique_id=1066480756]
+
+[node name="Muzzle" type="Marker2D" parent="AimPivot" unique_id=1107493386]
+
+[node name="HealthComponent" type="Node2D" parent="." unique_id=2125751622]
+script = ExtResource("4_ddoul")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1834751692]
+libraries/animations = ExtResource("5_8g4oa")
+
+[node name="InteractionArea" type="Area2D" parent="." unique_id=1278183803]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionArea" unique_id=1906095207]
+shape = SubResource("CircleShape2D_lbgnv")
+
+[connection signal="health_changed" from="HealthComponent" to="." method="_on_health_component_health_changed"]
+[connection signal="health_depleted" from="HealthComponent" to="." method="_on_health_component_health_depleted"]
+[connection signal="area_entered" from="InteractionArea" to="." method="_on_interaction_area_area_entered"]
+[connection signal="area_exited" from="InteractionArea" to="." method="_on_interaction_area_area_exited"]

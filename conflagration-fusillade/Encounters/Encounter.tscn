@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://bmgi3pp6n2ql3"]
+
+[ext_resource type="Script" uid="uid://cdh5u1fml0n1t" path="res://Encounters/Encounter.gd" id="1_vmjiv"]
+[ext_resource type="PackedScene" uid="uid://bea1by4w2p35n" path="res://Enemies/MinorZombie.tscn" id="2_mlljg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mpp2g"]
+radius = 26.093985
+
+[node name="Encounter" type="Node2D" unique_id=1176598636]
+script = ExtResource("1_vmjiv")
+enemy_scene = ExtResource("2_mlljg")
+
+[node name="Trigger" type="Area2D" parent="." unique_id=1283571849]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger" unique_id=733515869]
+scale = Vector2(13.52, 12.600001)
+shape = SubResource("CircleShape2D_mpp2g")
+
+[node name="SpawnPoints" type="Node2D" parent="." unique_id=1045114821]
+
+[node name="SpawnPoint1" type="Marker2D" parent="SpawnPoints" unique_id=1346538917]
+position = Vector2(-143, -113)
+
+[node name="SpawnPoint2" type="Marker2D" parent="SpawnPoints" unique_id=2018297497]
+position = Vector2(4, 183)
+
+[node name="SpawnPoint3" type="Marker2D" parent="SpawnPoints" unique_id=1959397104]
+position = Vector2(164, -109)
+
+[connection signal="body_entered" from="Trigger" to="." method="_on_trigger_body_entered"]

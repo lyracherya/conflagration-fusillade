@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d3x1vd2kdb1lj"]
+
+[ext_resource type="Script" uid="uid://dvunsk70hy84h" path="res://Objects/LevelExit.gd" id="1_mmw5r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5033"]
+size = Vector2(124, 98)
+
+[node name="LevelExit" type="Area2D" unique_id=737146425]
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+script = ExtResource("1_mmw5r")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1862332491]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=800193317]
+position = Vector2(-2, 4)
+shape = SubResource("RectangleShape2D_i5033")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=913479864]
+offset_left = -62.0
+offset_top = -49.0
+offset_right = 58.0
+offset_bottom = 56.0
+color = Color(0, 1, 0.47843137, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://mtjxfm2r57wk"]
+
+[ext_resource type="Script" uid="uid://onua48rig2kd" path="res://UI/BossHUD.gd" id="1_vcv6k"]
+
+[node name="BossHUD" type="CanvasLayer" unique_id=479922375]
+script = ExtResource("1_vcv6k")
+
+[node name="Layout" type="Control" parent="." unique_id=541460292]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BossPanel" type="PanelContainer" parent="Layout" unique_id=300925550]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.03
+anchor_right = 0.75
+anchor_bottom = 0.14
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Layout/BossPanel" unique_id=487539899]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Layout/BossPanel/VBoxContainer" unique_id=287211739]
+layout_mode = 2
+
+[node name="BossName" type="Label" parent="Layout/BossPanel/VBoxContainer/HBoxContainer" unique_id=1968969903]
+layout_mode = 2
+size_flags_vertical = 0
+text = "BOSS NAME"
+horizontal_alignment = 1
+
+[node name="HealthText" type="Label" parent="Layout/BossPanel/VBoxContainer/HBoxContainer" unique_id=1181708062]
+layout_mode = 2
+size_flags_vertical = 8
+text = "100/100"
+
+[node name="HealthBar" type="ProgressBar" parent="Layout/BossPanel/VBoxContainer" unique_id=256341220]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+value = 100.0
+show_percentage = false

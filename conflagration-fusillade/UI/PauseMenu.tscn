@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://dphv1t4u4roqr"]
+
+[ext_resource type="Script" uid="uid://d1p8roypx5d1u" path="res://UI/PauseMenu.gd" id="1_05bun"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=121872317]
+process_mode = 3
+visible = false
+script = ExtResource("1_05bun")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=731352509]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.48235294)
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1845691487]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -23.5
+offset_right = 4.0
+offset_bottom = 23.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer" unique_id=1295703178]
+layout_mode = 2
+
+[node name="PAUSED" type="Label" parent="PanelContainer/VBoxContainer" unique_id=1925008754]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "PAUSED
+"
+
+[node name="Resume" type="Button" parent="PanelContainer/VBoxContainer" unique_id=956854277]
+layout_mode = 2
+text = "Resume"
+
+[node name="Quit" type="Button" parent="PanelContainer/VBoxContainer" unique_id=1339205499]
+layout_mode = 2
+text = "Quit
+"

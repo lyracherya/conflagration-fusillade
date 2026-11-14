@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://ce38i1w116bjv"]
+
+[ext_resource type="PackedScene" uid="uid://d3x1vd2kdb1lj" path="res://Objects/LevelExit.tscn" id="1_m3ha0"]
+[ext_resource type="PackedScene" uid="uid://mtjxfm2r57wk" path="res://UI/BossHUD.tscn" id="1_w0h0a"]
+[ext_resource type="PackedScene" uid="uid://bmgi3pp6n2ql3" path="res://Encounters/Encounter.tscn" id="2_m3ha0"]
+[ext_resource type="PackedScene" uid="uid://bevt5igpsojoo" path="res://Objects/Interactable.tscn" id="3_vd23k"]
+[ext_resource type="PackedScene" uid="uid://b1u7l0wjb0oq4" path="res://UI/PlayerHUD.tscn" id="4_x7rwe"]
+[ext_resource type="Script" uid="uid://re2voeyw14wg" path="res://UI/player_hud.gd" id="5_lf2mf"]
+[ext_resource type="PackedScene" uid="uid://mud64ute32v1" path="res://Player/Player.tscn" id="6_80cou"]
+[ext_resource type="PackedScene" uid="uid://dphv1t4u4roqr" path="res://UI/PauseMenu.tscn" id="7_xosfc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5033"]
+size = Vector2(2734, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lbgnv"]
+size = Vector2(90, 1173.5)
+
+[node name="Main" type="Node2D" unique_id=1420393083]
+
+[node name="LevelExit" parent="." unique_id=737146425 instance=ExtResource("1_m3ha0")]
+position = Vector2(-1130, 450)
+
+[node name="BossHUD" parent="." unique_id=479922375 instance=ExtResource("1_w0h0a")]
+
+[node name="Encounter" parent="." unique_id=1176598636 node_paths=PackedStringArray("boss_hud") instance=ExtResource("2_m3ha0")]
+position = Vector2(-628, 173)
+is_boss_encounter = true
+boss_hud = NodePath("../BossHUD")
+
+[node name="Encounter2" parent="." unique_id=1479955697 instance=ExtResource("2_m3ha0")]
+position = Vector2(172, -136)
+
+[node name="Interactable" parent="." unique_id=2060086614 instance=ExtResource("3_vd23k")]
+position = Vector2(768, -300)
+dialogue_lines = Array[String](["yo welcome to the second level whats up", "yes thats correct we cannot tell since we are in a 2 dimensional space", "really breaking the third wall, huh"])
+
+[node name="PlayerHud" parent="." unique_id=1726726860 instance=ExtResource("4_x7rwe")]
+script = ExtResource("5_lf2mf")
+
+[node name="Player" parent="." unique_id=2127396765 groups=["player"] instance=ExtResource("6_80cou")]
+position = Vector2(1165, -497)
+
+[node name="World" type="Node2D" parent="." unique_id=1663128990]
+
+[node name="ArenaWalls" type="StaticBody2D" parent="World" unique_id=1069086224]
+collision_mask = 0
+
+[node name="top" type="CollisionShape2D" parent="World/ArenaWalls" unique_id=2070955703]
+position = Vector2(-1, -656)
+shape = SubResource("RectangleShape2D_i5033")
+
+[node name="left" type="CollisionShape2D" parent="World/ArenaWalls" unique_id=964932256]
+position = Vector2(1323, -28.25)
+shape = SubResource("RectangleShape2D_lbgnv")
+
+[node name="bottom" type="CollisionShape2D" parent="World/ArenaWalls" unique_id=1940268049]
+position = Vector2(-4, 611)
+shape = SubResource("RectangleShape2D_i5033")
+
+[node name="right" type="CollisionShape2D" parent="World/ArenaWalls" unique_id=1424356188]
+position = Vector2(-1332, -28)
+shape = SubResource("RectangleShape2D_lbgnv")
+
+[node name="PauseMenu" parent="." unique_id=121872317 instance=ExtResource("7_xosfc")]
+
+[connection signal="encounter_completed" from="Encounter" to="LevelExit" method="unlock"]
+[connection signal="encounter_completed" from="Encounter2" to="LevelExit" method="unlock"]
+[connection signal="health_changed" from="Player/HealthComponent" to="PlayerHud" method="_on_health_component_health_changed"]
+
+[editable path="Player"]
